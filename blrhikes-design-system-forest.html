@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLRHikes Design System - Forest</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/e0c6d65845.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Font Face Declarations */
+        @font-face {
+            font-family: 'Tiempos';
+            src: url('./fonts/tiempos-regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Tiempos';
+            src: url('./fonts/tiempos-italic.woff2') format('woff2');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        /* Color System - Forest Earth Tones */
+        :root {
+            /* Light Mode - Default */
+            --bg-primary: #f0f4f0;
+            --bg-secondary: #fafcfa;
+            --text-primary: #1e2e1e;
+            --text-secondary: #4a5a4a;
+            --border-color: #c4d4c4;
+            --accent: #3a7050;
+            --accent-hover: #2d5940;
+            --text-on-accent: #ffffff;
+        }
+
+        /* Dark Mode - Respects OS Preference */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #161d16;
+                --bg-secondary: #1d251d;
+                --text-primary: #e0e8e0;
+                --text-secondary: #8a9a8a;
+                --border-color: #2d3d2d;
+                --accent: #5a9070;
+                --accent-hover: #4a8060;
+                --text-on-accent: #ffffff;
+            }
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Tiempos', Georgia, 'Times New Roman', Times, serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Form Controls */
+        input[type="checkbox"],
+        input[type="radio"] {
+            accent-color: var(--accent);
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(58, 112, 80, 0.3);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(58, 112, 80, 0.3);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 640px) {
+            .section-display {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="max-w-7xl mx-auto p-6">
+        <!-- Header -->
+        <header class="text-center py-12 mb-12">
+            <h1 class="text-5xl font-bold text-[var(--text-primary)] mb-4">BLRHikes Design System</h1>
+            <p class="text-xl text-[var(--text-secondary)]">Forest Variant - Hiking Community Platform Components</p>
+            <p class="text-sm text-[var(--text-secondary)] mt-2">Forest earth tones inspired by nature • Dark mode respects OS
+                preferences</p>
+        </header>
+
+        <!-- Color Palette -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Color Palette</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Primary Background -->
+                <div class="text-center">
+                    <div class="bg-[var(--bg-primary)] border-2 border-[var(--border-color)] rounded-xl h-32 mb-3"></div>
+                    <p class="font-semibold text-[var(--text-primary)]">Primary BG</p>
+                    <p class="text-xs text-[var(--text-secondary)] mt-1">Light: #f0f4f0</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Dark: #161d16</p>
+                </div>
+
+                <!-- Secondary Background -->
+                <div class="text-center">
+                    <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl h-32 mb-3"></div>
+                    <p class="font-semibold text-[var(--text-primary)]">Secondary BG</p>
+                    <p class="text-xs text-[var(--text-secondary)] mt-1">Light: #fafcfa</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Dark: #1d251d</p>
+                </div>
+
+                <!-- Accent Color -->
+                <div class="text-center">
+                    <div class="bg-[var(--accent)] border-2 border-[var(--border-color)] rounded-xl h-32 mb-3"></div>
+                    <p class="font-semibold text-[var(--text-primary)]">Accent</p>
+                    <p class="text-xs text-[var(--text-secondary)] mt-1">Light: #3a7050</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Dark: #5a9070</p>
+                </div>
+
+                <!-- Border Color -->
+                <div class="text-center">
+                    <div class="bg-[var(--bg-secondary)] border-4 border-[var(--border-color)] rounded-xl h-32 mb-3"></div>
+                    <p class="font-semibold text-[var(--text-primary)]">Border</p>
+                    <p class="text-xs text-[var(--text-secondary)] mt-1">Light: #c4d4c4</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Dark: #2d3d2d</p>
+                </div>
+
+                <!-- Text Primary -->
+                <div class="text-center">
+                    <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl h-32 mb-3 flex items-center justify-center">
+                        <span class="text-[var(--text-primary)] text-2xl font-bold">Aa</span>
+                    </div>
+                    <p class="font-semibold text-[var(--text-primary)]">Text Primary</p>
+                    <p class="text-xs text-[var(--text-secondary)] mt-1">Light: #1e2e1e</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Dark: #e0e8e0</p>
+                </div>
+
+                <!-- Text Secondary -->
+                <div class="text-center">
+                    <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl h-32 mb-3 flex items-center justify-center">
+                        <span class="text-[var(--text-secondary)] text-2xl font-bold">Aa</span>
+                    </div>
+                    <p class="font-semibold text-[var(--text-primary)]">Text Secondary</p>
+                    <p class="text-xs text-[var(--text-secondary)] mt-1">Light: #4a5a4a</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Dark: #8a9a8a</p>
+                </div>
+
+                <!-- Text on Accent -->
+                <div class="text-center">
+                    <div class="bg-[var(--accent)] rounded-xl h-32 mb-3 flex items-center justify-center">
+                        <span class="text-on-accent text-2xl font-bold">Aa</span>
+                    </div>
+                    <p class="font-semibold text-[var(--text-primary)]">Text on Accent</p>
+                    <p class="text-xs text-[var(--text-secondary)] mt-1">#ffffff</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Both themes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Typography</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                <p class="text-xs text-[var(--text-secondary)] mb-4">Font Family: Tiempos (Regular & Italic)</p>
+                <h1 class="text-5xl md:text-7xl font-bold text-[var(--text-primary)] mb-4">Heading 1</h1>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">Heading 2</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">Heading 3</h3>
+                <h4 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Heading 4</h4>
+                <h5 class="text-xl font-semibold text-[var(--text-primary)] mb-4">Heading 5</h5>
+                <p class="text-lg text-[var(--text-primary)] mb-4">Body Text Large - Used for important paragraphs and lead text about
+                    hiking trails and outdoor adventures.</p>
+                <p class="text-base text-[var(--text-primary)] mb-4">Body Text Regular - The quick brown fox jumps over the lazy dog.
+                    This is the standard body text used throughout the hiking community platform.</p>
+                <p class="text-sm text-[var(--text-secondary)] mb-4">Small Text - Used for captions, hints, trail metadata, and
+                    secondary information.</p>
+                <p class="text-xs text-[var(--text-secondary)]">Extra Small - Timestamps, metadata, difficulty ratings, and fine
+                    print.</p>
+                <p class="text-base text-[var(--text-primary)] mb-4 italic mt-6">Italic variant - Beautiful serif italics for emphasis
+                    and special content.</p>
+            </div>
+        </section>
+
+        <!-- Buttons -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Buttons</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8 space-y-6">
+                <!-- Primary Buttons -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Primary Actions</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-[var(--accent)] text-[var(--text-on-accent)] px-6 py-3 rounded-lg font-semibold transition-all duration-200 border-0 cursor-pointer hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 hover:shadow-lg">Join Hike</button>
+                        <button class="bg-[var(--accent)] text-[var(--text-on-accent)] px-6 py-3 rounded-lg font-semibold transition-all duration-200 border-0 cursor-pointer hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 hover:shadow-lg">
+                            <i class="fas fa-plus mr-2"></i>Add Trail
+                        </button>
+                        <button class="bg-[var(--accent)] text-[var(--text-on-accent)] px-6 py-3 rounded-lg font-semibold transition-all duration-200 border-0 cursor-pointer hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 hover:shadow-lg rounded-full">
+                            <i class="fas fa-hiking mr-2"></i>Start Adventure
+                        </button>
+                        <button class="bg-[var(--accent)] text-[var(--text-on-accent)] px-6 py-3 rounded-lg font-semibold transition-all duration-200 border-0 cursor-pointer hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 hover:shadow-lg" disabled style="opacity: 0.5; cursor: not-allowed;">Full</button>
+                    </div>
+                </div>
+
+                <!-- Secondary Buttons -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Secondary Actions</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-transparent text-[var(--text-primary)] border-2 border-[var(--border-color)] px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer hover:border-[var(--accent)] hover:-translate-y-0.5">Cancel</button>
+                        <button class="bg-transparent text-[var(--text-primary)] border-2 border-[var(--border-color)] px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer hover:border-[var(--accent)] hover:-translate-y-0.5">
+                            <i class="fas fa-edit mr-2"></i>Edit Details
+                        </button>
+                        <button class="bg-transparent text-[var(--text-primary)] border-2 border-[var(--border-color)] px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer hover:border-[var(--accent)] hover:-translate-y-0.5 rounded-full">View More Trails</button>
+                        <button class="bg-transparent text-[var(--text-primary)] border-2 border-[var(--border-color)] px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer hover:border-[var(--accent)] hover:-translate-y-0.5 border-dashed border-2 text-[var(--accent)]"
+                            style="border-color: var(--accent);">
+                            <i class="fas fa-plus mr-2"></i>Add Photo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Icon Buttons -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Icon Buttons</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button
+                            class="w-12 h-12 rounded-full bg-[var(--bg-primary)] border-2 border-[var(--border-color)] flex items-center justify-center hover:border-theme transition-all"
+                            style="border-color: var(--accent);">
+                            <i class="fas fa-heart text-[var(--accent)]"></i>
+                        </button>
+                        <button
+                            class="w-12 h-12 rounded-full border-2 border-[var(--border-color)] flex items-center justify-center hover:border-theme transition-all"
+                            style="--hover-border: var(--accent);">
+                            <i class="fas fa-share text-[var(--text-secondary)]"></i>
+                        </button>
+                        <button
+                            class="w-12 h-12 rounded-full bg-[var(--accent)] text-[var(--text-on-accent)] flex items-center justify-center hover:-translate-y-1 transition-all">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Elements -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Form Elements</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8 space-y-6">
+                <!-- Text Inputs -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Text Inputs</p>
+                    <div class="space-y-4 max-w-md">
+                        <input type="text" placeholder="Trail name" class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] text-[var(--text-primary)] px-4 py-3 rounded-lg outline-none transition-all duration-200 focus:border-[var(--accent)] w-full" />
+                        <input type="text" value="Nandi Hills Sunrise Trek" class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] text-[var(--text-primary)] px-4 py-3 rounded-lg outline-none transition-all duration-200 focus:border-[var(--accent)] w-full" />
+                        <input type="text" placeholder="Disabled" disabled class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] text-[var(--text-primary)] px-4 py-3 rounded-lg outline-none transition-all duration-200 focus:border-[var(--accent)] w-full opacity-50" />
+                        <textarea placeholder="Describe the trail experience..." rows="3"
+                            class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] text-[var(--text-primary)] px-4 py-3 rounded-lg outline-none transition-all duration-200 focus:border-[var(--accent)] w-full resize-none"></textarea>
+                    </div>
+                </div>
+
+                <!-- Selects & Toggles -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Selects & Checkboxes</p>
+                    <div class="space-y-4 max-w-md">
+                        <select class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] text-[var(--text-primary)] px-4 py-3 rounded-lg outline-none transition-all duration-200 focus:border-[var(--accent)] w-full">
+                            <option>Choose difficulty level</option>
+                            <option>Easy</option>
+                            <option>Moderate</option>
+                            <option>Difficult</option>
+                            <option>Expert</option>
+                        </select>
+
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="check1" class="accent-checkbox rounded" />
+                            <label for="check1" class="text-[var(--text-primary)]">I agree to trail safety guidelines</label>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="check2" class="accent-checkbox rounded" />
+                            <label for="check2" class="text-[var(--text-primary)]">Send notifications for new hikes</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Range Slider -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Range Slider</p>
+                    <div class="max-w-md">
+                        <label class="block text-sm font-semibold text-[var(--text-primary)] mb-2">
+                            Distance Filter: <span class="accent-text">15 km</span>
+                        </label>
+                        <input type="range" min="0" max="50" value="15" class="w-full" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Cards</h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Basic Card -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent)] hover:-translate-y-1">
+                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">Basic Card</h3>
+                    <p class="text-[var(--text-secondary)] mb-4">This is a standard card component with hover effect for general
+                        content.</p>
+                    <button class="text-sm text-[var(--accent)] font-semibold">Learn More →</button>
+                </div>
+
+                <!-- Trail Card -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-2xl overflow-hidden hover:border-theme hover:-translate-y-1 transition-all"
+                    style="--hover-border: var(--accent);">
+                    <div class="h-40 bg-[var(--bg-primary)] flex items-center justify-center">
+                        <i class="fas fa-mountain text-6xl text-[var(--accent)]"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="inline-block px-2 py-1 border-2 border-[var(--border-color)] rounded text-xs font-semibold text-[var(--accent)] mb-3"
+                            style="background-color: var(--bg-primary);">
+                            MODERATE
+                        </div>
+                        <h3 class="text-xl font-bold text-[var(--text-primary)] mb-2">Savandurga Trek</h3>
+                        <p class="text-sm text-[var(--text-secondary)] mb-3">12 km • 4-5 hours • Elevation gain: 300m</p>
+                        <div class="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
+                            <i class="fas fa-users"></i>
+                            <span>24 hikers joined</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Trail Card -->
+                <div class="border-2 border-dashed rounded-2xl p-6 text-center hover:bg-secondary transition-all cursor-pointer"
+                    style="border-color: var(--accent); background-color: rgba(58, 112, 80, 0.05);">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+                        style="background-color: rgba(58, 112, 80, 0.1);">
+                        <i class="fas fa-plus text-[var(--accent)] text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-[var(--text-primary)] mb-2">Add New Trail</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Share your favorite hiking route</p>
+                </div>
+
+                <!-- User Card -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent)] hover:-translate-y-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-16 h-16 bg-[var(--accent)] rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-[var(--text-on-accent)] text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-[var(--text-primary)]">Arjun Kumar</h3>
+                            <p class="text-sm text-[var(--text-secondary)]">@arjunhikes</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-center pt-4 border-t border-[var(--border-color)]">
+                        <div>
+                            <p class="text-xl font-bold text-[var(--accent)]">23</p>
+                            <p class="text-xs text-[var(--text-secondary)]">Trails</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-[var(--accent)]">156</p>
+                            <p class="text-xs text-[var(--text-secondary)]">Followers</p>
+                        </div>
+                        <div>
+                            <p class="text-xl font-bold text-[var(--accent)]">89</p>
+                            <p class="text-xs text-[var(--text-secondary)]">Following</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges & Tags -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Badges & Tags</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8 space-y-6">
+                <!-- Difficulty Badges -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Difficulty Badges</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="inline-flex items-center justify-center px-3 text-xs font-semibold uppercase tracking-wider leading-none border-2 border-[var(--border-color)] text-[var(--text-primary)] bg-[var(--bg-primary)] pt-[0.3rem] pb-[0.2rem]">EASY</span>
+                        <span class="inline-flex items-center justify-center px-3 text-xs font-semibold uppercase tracking-wider leading-none border-2 border-[var(--border-color)] text-[var(--accent)] bg-[var(--bg-primary)] pt-[0.3rem] pb-[0.2rem]">MODERATE</span>
+                        <span class="inline-flex items-center justify-center px-3 text-xs font-semibold uppercase tracking-wider leading-none bg-[var(--accent)] text-[var(--text-on-accent)] pt-[0.3rem] pb-[0.2rem]">DIFFICULT</span>
+                        <span class="inline-flex items-center justify-center px-3 text-xs font-semibold uppercase tracking-wider leading-none text-[var(--text-primary)] bg-[var(--border-color)] pt-[0.3rem] pb-[0.2rem]">EXPERT</span>
+                    </div>
+                </div>
+
+                <!-- Trail Tags -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Trail Feature Tags</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="bg-[var(--bg-secondary)] border border-[var(--border-color)] px-4 py-2 rounded-full text-sm font-semibold hover:accent-bg hover:text-on-accent transition-all cursor-pointer">Sunrise
+                            View</span>
+                        <span
+                            class="bg-[var(--bg-secondary)] border border-[var(--border-color)] px-4 py-2 rounded-full text-sm font-semibold hover:accent-bg hover:text-on-accent transition-all cursor-pointer">Waterfalls</span>
+                        <span
+                            class="bg-[var(--bg-secondary)] border border-[var(--border-color)] px-4 py-2 rounded-full text-sm font-semibold hover:accent-bg hover:text-on-accent transition-all cursor-pointer">Forest
+                            Trail</span>
+                        <span class="px-4 py-2 rounded-full text-sm font-semibold"
+                            style="background-color: var(--bg-primary);">Pet Friendly</span>
+                    </div>
+                </div>
+
+                <!-- Status Labels -->
+                <div>
+                    <p class="text-sm text-[var(--text-secondary)] mb-3">Status Labels</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="inline-block text-[var(--accent)] px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider"
+                            style="background-color: var(--bg-primary);">Upcoming</span>
+                        <span class="inline-block text-[var(--accent)] px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider"
+                            style="background-color: var(--bg-primary);">Full</span>
+                        <span class="inline-block text-[var(--accent)] px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider"
+                            style="background-color: var(--bg-primary);">Cancelled</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Patterns -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Navigation Patterns</h2>
+
+            <div class="space-y-8">
+                <!-- Tab Navigation -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-6">Tabs</h3>
+                    <div class="border-b border-[var(--border-color)]">
+                        <div class="flex gap-8">
+                            <button class="pb-3 border-b-4 border-b-[var(--accent)] text-[var(--text-primary)] font-semibold">Upcoming Hikes</button>
+                            <button class="pb-3 border-b-4 border-b-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Past Hikes</button>
+                            <button class="pb-3 border-b-4 border-b-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Saved Trails</button>
+                            <button class="pb-3 border-b-4 border-b-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Settings</button>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-[var(--text-secondary)]">Tab content appears here...</p>
+                    </div>
+                </div>
+
+                <!-- Breadcrumbs -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-6">Breadcrumbs</h3>
+                    <nav class="flex items-center gap-2 text-sm">
+                        <a href="#" class="text-[var(--text-secondary)] hover:text-primary transition-colors">Home</a>
+                        <i class="fas fa-chevron-right text-[var(--text-secondary)] text-xs"></i>
+                        <a href="#" class="text-[var(--text-secondary)] hover:text-primary transition-colors">Trails</a>
+                        <i class="fas fa-chevron-right text-[var(--text-secondary)] text-xs"></i>
+                        <a href="#" class="text-[var(--text-secondary)] hover:text-primary transition-colors">Bangalore</a>
+                        <i class="fas fa-chevron-right text-[var(--text-secondary)] text-xs"></i>
+                        <span class="text-[var(--text-primary)] font-semibold">Nandi Hills</span>
+                    </nav>
+                </div>
+
+                <!-- Pagination -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-6">Pagination</h3>
+                    <div class="flex items-center justify-center gap-2">
+                        <button class="w-10 h-10 rounded-lg bg-[var(--bg-primary)] hover:bg-secondary flex items-center justify-center transition-colors">
+                            <i class="fas fa-chevron-left text-[var(--text-secondary)]"></i>
+                        </button>
+                        <button class="w-10 h-10 rounded-lg bg-[var(--accent)] text-[var(--text-on-accent)] font-semibold">1</button>
+                        <button class="w-10 h-10 rounded-lg bg-[var(--bg-primary)] hover:bg-secondary text-[var(--text-primary)] font-semibold transition-colors">2</button>
+                        <button class="w-10 h-10 rounded-lg bg-[var(--bg-primary)] hover:bg-secondary text-[var(--text-primary)] font-semibold transition-colors">3</button>
+                        <span class="text-[var(--text-secondary)] px-2">...</span>
+                        <button class="w-10 h-10 rounded-lg bg-[var(--bg-primary)] hover:bg-secondary text-[var(--text-primary)] font-semibold transition-colors">12</button>
+                        <button class="w-10 h-10 rounded-lg bg-[var(--bg-primary)] hover:bg-secondary flex items-center justify-center transition-colors">
+                            <i class="fas fa-chevron-right text-[var(--text-secondary)]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Components -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Mobile Navigation & Layouts</h2>
+
+            <div class="space-y-8">
+                <!-- Mobile Header -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-6">Mobile Header</h3>
+                    <div class="max-w-sm mx-auto rounded-xl p-4" style="background-color: var(--bg-primary);">
+                        <div class="flex items-center justify-between">
+                            <button
+                                class="w-10 h-10 rounded-lg bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] flex items-center justify-center hover:border-theme transition-all">
+                                <i class="fas fa-bars text-sm text-[var(--text-primary)]"></i>
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-hiking text-[var(--accent)]"></i>
+                                <span class="font-bold text-[var(--text-primary)] text-lg">BLRHikes</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 rounded-lg bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] flex items-center justify-center hover:border-theme transition-all">
+                                <i class="fas fa-user text-sm text-[var(--text-primary)]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-6">Bottom Navigation</h3>
+                    <div class="max-w-sm mx-auto">
+                        <div class="rounded-t-xl border-t-2 border-[var(--border-color)] p-2" style="background-color: var(--bg-primary);">
+                            <div class="flex items-center justify-around">
+                                <button class="flex flex-col items-center gap-1 p-3 rounded-lg bg-[var(--accent)] text-[var(--text-on-accent)] transition-all">
+                                    <i class="fas fa-home text-lg"></i>
+                                    <span class="text-xs font-semibold">Home</span>
+                                </button>
+                                <button class="flex flex-col items-center gap-1 p-3 rounded-lg hover:bg-secondary transition-all">
+                                    <i class="fas fa-search text-lg text-[var(--text-secondary)]"></i>
+                                    <span class="text-xs font-semibold text-[var(--text-secondary)]">Explore</span>
+                                </button>
+                                <button class="flex flex-col items-center gap-1 p-3 rounded-lg hover:bg-secondary transition-all">
+                                    <i class="fas fa-plus text-lg text-[var(--text-secondary)]"></i>
+                                    <span class="text-xs font-semibold text-[var(--text-secondary)]">Add</span>
+                                </button>
+                                <button class="flex flex-col items-center gap-1 p-3 rounded-lg hover:bg-secondary transition-all">
+                                    <i class="fas fa-user text-lg text-[var(--text-secondary)]"></i>
+                                    <span class="text-xs font-semibold text-[var(--text-secondary)]">Profile</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compact Mobile Card -->
+                <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                    <h3 class="text-xl font-bold text-[var(--text-primary)] mb-6">Compact Trail Card (Mobile)</h3>
+                    <div class="max-w-sm mx-auto border border-[var(--border-color)] rounded-xl p-4" style="background-color: var(--bg-primary);">
+                        <div class="flex gap-3">
+                            <div class="w-16 h-16 bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-mountain text-[var(--accent)] text-xl"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-start justify-between mb-1">
+                                    <h4 class="font-semibold text-[var(--text-primary)] truncate">Nandi Hills Trek</h4>
+                                    <span class="inline-flex items-center justify-center px-3 text-xs font-semibold uppercase tracking-wider leading-none bg-[var(--accent)] text-[var(--text-on-accent)] ml-2 pt-[0.3rem] pb-[0.2rem]">EASY</span>
+                                </div>
+                                <p class="text-sm text-[var(--text-secondary)] mb-2 line-clamp-2">Popular sunrise point near Bangalore...</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-[var(--text-secondary)]">8 km • 3 hours</span>
+                                    <span class="text-xs text-[var(--text-secondary)]">Tomorrow</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toast Notifications -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Toast Notifications</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                <div class="space-y-4">
+                    <!-- Success Toast -->
+                    <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] border-l-4 border-l-[var(--accent)] px-6 py-4 rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.2)] animate-slide-up">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-[var(--accent)] rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-[var(--text-on-accent)] text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-[var(--text-primary)]">Successfully Joined!</p>
+                                <p class="text-sm text-[var(--text-secondary)]">You're registered for the Nandi Hills sunrise trek.</p>
+                            </div>
+                            <button class="text-[var(--text-secondary)] hover:text-primary transition-colors">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Info Toast -->
+                    <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] border-l-4 border-l-[var(--accent)] px-6 py-4 rounded-lg shadow-[0_10px_30px_rgba(0,0,0,0.2)]">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: var(--bg-primary);">
+                                <i class="fas fa-info text-[var(--text-secondary)]"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-[var(--text-primary)]">Weather Update</p>
+                                <p class="text-sm text-[var(--text-secondary)] mb-2">Clear skies expected for tomorrow's hike.</p>
+                                <button class="text-sm text-[var(--accent)] font-semibold">View Details →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Windows -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Modal Windows</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                <h3 class="text-xl font-bold text-[var(--text-primary)] mb-6">Confirmation Modal Example</h3>
+                <div class="relative rounded-2xl overflow-hidden" style="background-color: var(--bg-primary);">
+                    <div class="bg-[var(--bg-secondary)] rounded-2xl max-w-md mx-auto m-8 text-center">
+                        <div class="p-8">
+                            <div class="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center"
+                                style="background-color: rgba(58, 112, 80, 0.1);">
+                                <i class="fas fa-exclamation-triangle text-[var(--accent)] text-3xl"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-[var(--text-primary)] mb-3">Cancel Registration?</h4>
+                            <p class="text-[var(--text-secondary)] mb-6">Are you sure you want to cancel your registration for the Savandurga trek on Saturday?</p>
+                            <div class="flex gap-3">
+                                <button class="bg-transparent text-[var(--text-primary)] border-2 border-[var(--border-color)] px-6 py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer hover:border-[var(--accent)] hover:-translate-y-0.5 flex-1">Keep Registration</button>
+                                <button class="bg-[var(--accent)] text-[var(--text-on-accent)] px-6 py-3 rounded-lg font-semibold transition-all duration-200 border-0 cursor-pointer hover:bg-[var(--accent-hover)] hover:-translate-y-0.5 hover:shadow-lg flex-1">Yes, Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading States -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Loading States</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Spinner -->
+                    <div class="text-center">
+                        <div class="rounded-xl p-8 mb-3" style="background-color: var(--bg-primary);">
+                            <div class="w-12 h-12 border-4 border-[var(--border-color)] rounded-full mx-auto animate-spin"
+                                style="border-top-color: var(--accent);"></div>
+                        </div>
+                        <p class="font-semibold text-[var(--text-primary)]">Spinner</p>
+                    </div>
+
+                    <!-- Pulse Dots -->
+                    <div class="text-center">
+                        <div class="rounded-xl p-8 mb-3" style="background-color: var(--bg-primary);">
+                            <div class="flex gap-2 justify-center">
+                                <div class="w-3 h-3 bg-[var(--accent)] rounded-full animate-pulse"></div>
+                                <div class="w-3 h-3 bg-[var(--accent)] rounded-full animate-pulse"
+                                    style="animation-delay: 0.2s"></div>
+                                <div class="w-3 h-3 bg-[var(--accent)] rounded-full animate-pulse"
+                                    style="animation-delay: 0.4s"></div>
+                            </div>
+                        </div>
+                        <p class="font-semibold text-[var(--text-primary)]">Dots</p>
+                    </div>
+
+                    <!-- Skeleton -->
+                    <div class="text-center">
+                        <div class="rounded-xl p-8 mb-3" style="background-color: var(--bg-primary);">
+                            <div class="space-y-3">
+                                <div class="h-3 bg-[var(--bg-secondary)] rounded animate-pulse"></div>
+                                <div class="h-3 bg-[var(--bg-secondary)] rounded animate-pulse w-3/4"></div>
+                                <div class="h-3 bg-[var(--bg-secondary)] rounded animate-pulse w-1/2"></div>
+                            </div>
+                        </div>
+                        <p class="font-semibold text-[var(--text-primary)]">Skeleton</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing System -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Spacing System</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div>
+                        <div class="h-4 mb-2" style="background-color: var(--bg-primary);"></div>
+                        <p class="text-xs text-[var(--text-secondary)]">4px (1)</p>
+                    </div>
+                    <div>
+                        <div class="h-8 mb-2" style="background-color: var(--bg-primary);"></div>
+                        <p class="text-xs text-[var(--text-secondary)]">8px (2)</p>
+                    </div>
+                    <div>
+                        <div class="h-12 mb-2" style="background-color: var(--bg-primary);"></div>
+                        <p class="text-xs text-[var(--text-secondary)]">12px (3)</p>
+                    </div>
+                    <div>
+                        <div class="h-16 mb-2" style="background-color: var(--bg-primary);"></div>
+                        <p class="text-xs text-[var(--text-secondary)]">16px (4)</p>
+                    </div>
+                    <div>
+                        <div class="h-20 mb-2" style="background-color: var(--bg-primary);"></div>
+                        <p class="text-xs text-[var(--text-secondary)]">20px (5)</p>
+                    </div>
+                    <div>
+                        <div class="h-24 mb-2" style="background-color: var(--bg-primary);"></div>
+                        <p class="text-xs text-[var(--text-secondary)]">24px (6)</p>
+                    </div>
+                    <div>
+                        <div class="h-32 mb-2" style="background-color: var(--bg-primary);"></div>
+                        <p class="text-xs text-[var(--text-secondary)]">32px (8)</p>
+                    </div>
+                    <div>
+                        <div class="h-48 mb-2" style="background-color: var(--bg-primary);"></div>
+                        <p class="text-xs text-[var(--text-secondary)]">48px (12)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive States -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)] mb-8">Interactive States</h2>
+
+            <div class="bg-[var(--bg-secondary)] border-2 border-[var(--border-color)] rounded-xl p-8">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Default State -->
+                    <div class="text-center">
+                        <div class="border-2 border-[var(--border-color)] rounded-xl p-6 mb-3" style="background-color: var(--bg-primary);">
+                            <i class="fas fa-hand-pointer text-3xl text-[var(--text-secondary)]"></i>
+                        </div>
+                        <p class="font-semibold text-[var(--text-primary)]">Default</p>
+                        <p class="text-xs text-[var(--text-secondary)] mt-1">Base state</p>
+                    </div>
+
+                    <!-- Hover State -->
+                    <div class="text-center">
+                        <div class="border-2 rounded-xl p-6 mb-3 transform -translate-y-1"
+                            style="background-color: var(--bg-primary); border-color: var(--accent);">
+                            <i class="fas fa-hand-pointer text-3xl text-[var(--accent)]"></i>
+                        </div>
+                        <p class="font-semibold text-[var(--text-primary)]">Hover</p>
+                        <p class="text-xs text-[var(--text-secondary)] mt-1">Border color + lift</p>
+                    </div>
+
+                    <!-- Active/Selected State -->
+                    <div class="text-center">
+                        <div class="bg-[var(--accent)] border-2 rounded-xl p-6 mb-3" style="border-color: var(--accent);">
+                            <i class="fas fa-hand-pointer text-3xl text-[var(--text-on-accent)]"></i>
+                        </div>
+                        <p class="font-semibold text-[var(--text-primary)]">Active/Selected</p>
+                        <p class="text-xs text-[var(--text-secondary)] mt-1">Filled accent</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-12 mt-20 border-t-2 border-[var(--border-color)]">
+            <p class="text-[var(--text-secondary)] mb-2">BLRHikes Design System - Forest Variant v1.0</p>
+            <p class="text-sm text-[var(--accent)] font-semibold">Forest • Natural • Adventure Ready</p>
+            <p class="text-xs text-[var(--text-secondary)] mt-4">Dark mode automatically respects your system preferences</p>
+        </footer>
+    </div>
+</body>
+
+</html>

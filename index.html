@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/e0c6d65845.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        @font-face {
+            font-family: 'Tiempos';
+            src: url('./fonts/tiempos-regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-8">
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Design Systems</h1>
+            <p class="text-gray-600">Browse and explore available design systems</p>
+        </header>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <!-- Absurd Industries Design System -->
+            <a href="design-system.html" class="block group">
+                <div class="bg-[#1a1a1a] rounded-2xl overflow-hidden border-2 border-[#3a3a3a] hover:border-[#ff4500] transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#ff4500] flex items-center justify-center">
+                                <i class="fas fa-cog text-white animate-spin" style="animation-duration: 8s;"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-[#ece0cf]" style="font-family: 'Jura', sans-serif;">Absurd Industries</h2>
+                                <p class="text-xs text-[#9ca3af]">Guild Maker Profile</p>
+                            </div>
+                        </div>
+
+                        <!-- Color swatches -->
+                        <div class="flex gap-2 mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-[#ece0cf]" title="Primary BG Light"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#1a1a1a] border border-[#3a3a3a]" title="Primary BG Dark"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#ff4500]" title="Accent Orange"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#2a2a2a]" title="Secondary"></div>
+                        </div>
+
+                        <!-- Sample components -->
+                        <div class="space-y-3">
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-[#ff4500] text-white text-xs font-semibold rounded" style="font-family: 'Jura', sans-serif;">IN PROGRESS</span>
+                                <span class="px-3 py-1 bg-[#2a2a2a] text-[#ece0cf] text-xs font-semibold rounded border border-[#3a3a3a]" style="font-family: 'Jura', sans-serif;">IDEA</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="px-4 py-2 bg-[#ff4500] text-white text-sm font-semibold rounded-lg" style="font-family: 'Jura', sans-serif;">Save Changes</button>
+                                <button class="px-4 py-2 bg-[#2a2a2a] text-[#ece0cf] text-sm font-semibold rounded-lg border border-[#3a3a3a]" style="font-family: 'Jura', sans-serif;">Cancel</button>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-[#3a3a3a] flex items-center justify-between">
+                            <span class="text-xs text-[#9ca3af]" style="font-family: 'Jura', sans-serif;">Jura Font • Dark/Light Toggle</span>
+                            <i class="fas fa-arrow-right text-[#ff4500] group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- BLRHikes - Yellow/Stone -->
+            <a href="blrhikes-design-system.html" class="block group">
+                <div class="bg-[#fafaf9] rounded-2xl overflow-hidden border-2 border-[#e7e5e4] hover:border-[#eab308] transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#eab308] flex items-center justify-center">
+                                <i class="fas fa-hiking text-[#1c1917]"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-[#1c1917]" style="font-family: 'Tiempos', Georgia, serif;">BLRHikes</h2>
+                                <p class="text-xs text-[#78716c]">Stone + Yellow</p>
+                            </div>
+                        </div>
+
+                        <!-- Color swatches -->
+                        <div class="flex gap-2 mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-[#fafaf9] border border-[#e7e5e4]" title="Stone 50"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#f5f5f4]" title="Stone 100"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#eab308]" title="Yellow 500"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#1c1917]" title="Stone 900"></div>
+                        </div>
+
+                        <!-- Sample components -->
+                        <div class="space-y-3">
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-[#eab308] text-[#1c1917] text-xs font-semibold" style="font-family: 'Tiempos', Georgia, serif;">DIFFICULT</span>
+                                <span class="px-3 py-1 bg-[#f5f5f4] text-[#78716c] text-xs font-semibold border border-[#e7e5e4]" style="font-family: 'Tiempos', Georgia, serif;">EASY</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="px-4 py-2 bg-[#eab308] text-[#1c1917] text-sm font-semibold rounded-lg" style="font-family: 'Tiempos', Georgia, serif;">Join Hike</button>
+                                <button class="px-4 py-2 bg-transparent text-[#1c1917] text-sm font-semibold rounded-lg border-2 border-[#e7e5e4]" style="font-family: 'Tiempos', Georgia, serif;">Cancel</button>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-[#e7e5e4] flex items-center justify-between">
+                            <span class="text-xs text-[#78716c]" style="font-family: 'Tiempos', Georgia, serif;">Tiempos Serif • Warm Tones</span>
+                            <i class="fas fa-arrow-right text-[#eab308] group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- BLRHikes - Forest -->
+            <a href="blrhikes-design-system-forest.html" class="block group">
+                <div class="bg-[#f0f4f0] rounded-2xl overflow-hidden border-2 border-[#c4d4c4] hover:border-[#3a7050] transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#3a7050] flex items-center justify-center">
+                                <i class="fas fa-tree text-white"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-[#1e2e1e]" style="font-family: 'Tiempos', Georgia, serif;">BLRHikes Forest</h2>
+                                <p class="text-xs text-[#4a5a4a]">Forest Earth Tones</p>
+                            </div>
+                        </div>
+
+                        <!-- Color swatches -->
+                        <div class="flex gap-2 mb-4">
+                            <div class="w-8 h-8 rounded-lg bg-[#f0f4f0] border border-[#c4d4c4]" title="Primary BG"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#fafcfa]" title="Secondary BG"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#3a7050]" title="Forest Green"></div>
+                            <div class="w-8 h-8 rounded-lg bg-[#1e2e1e]" title="Text Primary"></div>
+                        </div>
+
+                        <!-- Sample components -->
+                        <div class="space-y-3">
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-[#3a7050] text-white text-xs font-semibold rounded" style="font-family: 'Tiempos', Georgia, serif;">DIFFICULT</span>
+                                <span class="px-3 py-1 bg-[#f0f4f0] text-[#3a7050] text-xs font-semibold border border-[#c4d4c4] rounded" style="font-family: 'Tiempos', Georgia, serif;">MODERATE</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="px-4 py-2 bg-[#3a7050] text-white text-sm font-semibold rounded-lg" style="font-family: 'Tiempos', Georgia, serif;">Join Hike</button>
+                                <button class="px-4 py-2 bg-transparent text-[#1e2e1e] text-sm font-semibold rounded-lg border-2 border-[#c4d4c4]" style="font-family: 'Tiempos', Georgia, serif;">Cancel</button>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-[#c4d4c4] flex items-center justify-between">
+                            <span class="text-xs text-[#4a5a4a]" style="font-family: 'Tiempos', Georgia, serif;">Tiempos Serif • Nature Inspired</span>
+                            <i class="fas fa-arrow-right text-[#3a7050] group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- BLRHikes - Black & White -->
+            <a href="blrhikes-design-system-bw.html" class="block group">
+                <div class="bg-white overflow-hidden border-2 border-[#d4d4d4] hover:border-black transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-black flex items-center justify-center">
+                                <i class="fas fa-mountain text-white"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-bold text-black" style="font-family: 'Tiempos', Georgia, serif;">BLRHikes B&W</h2>
+                                <p class="text-xs text-[#666666]">Minimalist Monochrome</p>
+                            </div>
+                        </div>
+
+                        <!-- Color swatches -->
+                        <div class="flex gap-2 mb-4">
+                            <div class="w-8 h-8 bg-white border border-[#d4d4d4]" title="White"></div>
+                            <div class="w-8 h-8 bg-[#f5f5f5]" title="Light Gray"></div>
+                            <div class="w-8 h-8 bg-[#d4d4d4]" title="Border"></div>
+                            <div class="w-8 h-8 bg-black" title="Black"></div>
+                        </div>
+
+                        <!-- Sample components -->
+                        <div class="space-y-3">
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 bg-black text-white text-xs font-semibold" style="font-family: 'Tiempos', Georgia, serif;">DIFFICULT</span>
+                                <span class="px-3 py-1 bg-white text-black text-xs font-semibold border border-[#d4d4d4]" style="font-family: 'Tiempos', Georgia, serif;">EASY</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="px-4 py-2 bg-black text-white text-sm font-semibold" style="font-family: 'Tiempos', Georgia, serif;">Join Hike</button>
+                                <button class="px-4 py-2 bg-transparent text-black text-sm font-semibold border-2 border-[#d4d4d4]" style="font-family: 'Tiempos', Georgia, serif;">Cancel</button>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-[#d4d4d4] flex items-center justify-between">
+                            <span class="text-xs text-[#666666]" style="font-family: 'Tiempos', Georgia, serif;">Tiempos Serif • Sharp Corners</span>
+                            <i class="fas fa-arrow-right text-black group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>Click any card to view the full design system</p>
+        </footer>
+    </div>
+</body>
+</html>
