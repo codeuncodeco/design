@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLR Hikes | Discover Hidden Trails</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600;700&display=swap"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              light: {
+                primary: "#626F47",
+                secondary: "#A4B465",
+                accent: "#FFCF50",
+                background: "#FEFAE0",
+              },
+              dark: {
+                primary: "#69247C",
+                secondary: "#DA498D",
+                accent: "#FAC67A",
+                background: "#1A1625",
+              },
+            },
+            fontFamily: {
+              cormorant: ['"Cormorant Garamond"', "serif"],
+              lora: ["Lora", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Minimal custom CSS for elements that can't be easily styled with Tailwind */
+      .grain-texture {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+      }
+
+      .dark .grain-texture {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+      }
+
+      .dark .star-field {
+        background-image:
+          radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent 80%),
+          radial-gradient(circle at 20% 80%, rgba(218, 73, 141, 0.15), transparent 50%);
+      }
+    </style>
+  </head>
+  <body
+    class="font-lora bg-light-background dark:bg-dark-background text-light-primary dark:text-white transition-colors duration-500 ease-in-out grain-texture"
+  >
+    <!-- Navigation -->
+    <nav class="px-6 py-4 md:px-12 flex justify-between items-center">
+      <a href="#" class="font-cormorant text-3xl md:text-4xl font-semibold tracking-wide">BLR Hikes</a>
+      <div class="flex items-center space-x-6">
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-full hover:bg-light-secondary/20 dark:hover:bg-dark-secondary/20 transition-colors"
+        >
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:block"></i>
+        </button>
+        <div class="hidden md:flex space-x-8 font-cormorant text-lg">
+          <a href="#about" class="hover:text-light-secondary dark:hover:text-dark-accent transition-colors">About</a>
+          <a href="#activities" class="hover:text-light-secondary dark:hover:text-dark-accent transition-colors">
+            Activities
+          </a>
+          <a href="#trails" class="hover:text-light-secondary dark:hover:text-dark-accent transition-colors">Trails</a>
+          <a href="#join" class="hover:text-light-secondary dark:hover:text-dark-accent transition-colors">Join Us</a>
+        </div>
+        <button class="md:hidden">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col justify-center px-6 md:px-16 py-12 star-field">
+      <div class="max-w-4xl">
+        <h1 class="font-cormorant text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+          <span class="text-light-secondary dark:text-dark-accent">Discover</span>
+          the hidden paths,
+          <br />
+          where
+          <span class="text-light-accent dark:text-dark-secondary">wilderness</span>
+          meets wonder
+        </h1>
+        <p class="text-xl md:text-2xl max-w-2xl opacity-90 mb-10 leading-relaxed">
+          A community of kindred spirits exploring the untamed landscapes beyond the ordinary. From forest trails to
+          secluded waterfalls, we move in reverent dialogue with the natural world.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="#join"
+            class="px-8 py-3 bg-light-primary dark:bg-dark-primary text-white rounded-md text-lg font-medium hover:bg-light-secondary dark:hover:bg-dark-secondary transition-colors flex items-center justify-center sm:justify-start"
+          >
+            <span>Join Our Community</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+          <a
+            href="#trails"
+            class="px-8 py-3 border border-light-primary dark:border-dark-accent rounded-md text-lg font-medium hover:bg-light-primary/10 dark:hover:bg-dark-accent/10 transition-colors flex items-center justify-center sm:justify-start"
+          >
+            <span>Explore Trails</span>
+            <i class="fas fa-map-marked-alt ml-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Subtle decorative elements -->
+      <div
+        class="absolute bottom-12 right-12 w-40 h-40 border-2 border-light-secondary dark:border-dark-accent rounded-full opacity-20 hidden lg:block"
+      ></div>
+      <div
+        class="absolute top-1/4 right-24 w-20 h-20 border border-light-accent dark:border-dark-secondary rounded-full opacity-10 hidden lg:block"
+      ></div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+        <span class="text-sm opacity-70 mb-2">Scroll to discover</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 md:px-16 bg-light-primary/5 dark:bg-dark-primary/30">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-cormorant text-3xl md:text-5xl font-semibold mb-12 flex items-center">
+          <span class="w-12 h-0.5 bg-light-accent dark:bg-dark-accent mr-4"></span>
+          About Our Community
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <p class="text-lg leading-relaxed mb-6">
+              BLR Hikes is a tapestry of diverse individuals united by a shared reverence for the more-than-human world.
+              We are naturalists, herpetologists, poets, artists, lifeguards, explorers, and mountaineers—each bringing
+              unique perspectives to our collective journey.
+            </p>
+            <p class="text-lg leading-relaxed">
+              Our community moves through landscapes with intentionality and care, seeking not to conquer heights but to
+              commune with them. We hike, swim, cycle, cook over open flames, paddle across waters, and sleep beneath
+              stars—finding what each season offers and adapting our activities to honor natural rhythms.
+            </p>
+          </div>
+          <div class="flex flex-col justify-between">
+            <div class="mb-8 border-l-2 border-light-secondary dark:border-dark-secondary pl-6">
+              <h3 class="font-cormorant text-2xl mb-3">Our Ethos</h3>
+              <p class="opacity-80">
+                We practice mindful engagement with wild spaces, moving as attentive participants rather than mere
+                visitors. Each expedition becomes a doorway to deeper ecological awareness.
+              </p>
+            </div>
+            <div class="border-l-2 border-light-accent dark:border-dark-accent pl-6">
+              <h3 class="font-cormorant text-2xl mb-3">Our Promise</h3>
+              <p class="opacity-80">
+                To guide you toward hidden wonders while fostering the skills needed to develop your own relationship
+                with the living terrain. We don't simply show paths—we help you learn to read the land.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Activities Section -->
+    <section id="activities" class="py-20 px-6 md:px-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-cormorant text-3xl md:text-5xl font-semibold mb-12 flex items-center">
+          <span class="w-12 h-0.5 bg-light-secondary dark:bg-dark-secondary mr-4"></span>
+          Our Rhythms &amp; Practices
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-16">
+          <!-- Hiking Element -->
+          <div class="relative">
+            <div
+              class="absolute -top-6 -left-6 w-12 h-12 border border-light-accent dark:border-dark-accent rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-hiking text-light-accent dark:text-dark-accent"></i>
+            </div>
+            <h3 class="font-cormorant text-2xl md:text-3xl font-semibold mb-4 pl-8">Contemplative Hiking</h3>
+            <p class="text-lg leading-relaxed mb-4">
+              We move across terrain not as conquerors but as listeners. Each step becomes a reciprocal exchange—our
+              feet reading the contours of earth while the land inscribes its patterns upon our awareness.
+            </p>
+            <p class="text-lg leading-relaxed opacity-80">
+              Our trails range from gentle forest floors to rocky ascents, yet pace always honors perception rather than
+              achievement. We pause to notice fungal networks, emergent seedlings, and the shifting dialogue between
+              stones and water.
+            </p>
+            <div class="mt-8 flex flex-col space-y-2">
+              <div class="flex items-center">
+                <span class="w-2 h-2 rounded-full bg-light-secondary dark:bg-dark-secondary mr-3"></span>
+                <span>Seasonal emergence patterns</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-2 h-2 rounded-full bg-light-secondary dark:bg-dark-secondary mr-3"></span>
+                <span>Sound-mapping techniques</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-2 h-2 rounded-full bg-light-secondary dark:bg-dark-secondary mr-3"></span>
+                <span>Watershed-conscious movement</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Swimming Element -->
+          <div class="relative">
+            <div
+              class="absolute -top-6 -left-6 w-12 h-12 border border-light-primary dark:border-dark-primary rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-water text-light-primary dark:text-dark-primary"></i>
+            </div>
+            <h3 class="font-cormorant text-2xl md:text-3xl font-semibold mb-4 pl-8">Immersive Waters</h3>
+            <p class="text-lg leading-relaxed mb-4">
+              To enter water is to surrender to a different medium of being—one where sound travels differently, where
+              our bodies receive gravity's pull through altered resistance, where temperature speaks directly to our
+              cellular memory.
+            </p>
+            <p class="text-lg leading-relaxed opacity-80">
+              From hidden plunge pools beneath cascades to the still mirror-surfaces of high mountain lakes, we practice
+              careful entry into waters that hold both invitation and boundary. Our swimming becomes a form of
+              conversation with the liquid element.
+            </p>
+            <div class="mt-8 flex flex-col space-y-2">
+              <div class="flex items-center">
+                <span class="w-2 h-2 rounded-full bg-light-primary dark:bg-dark-primary mr-3"></span>
+                <span>Seasonal temperature adaptations</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-2 h-2 rounded-full bg-light-primary dark:bg-dark-primary mr-3"></span>
+                <span>Water quality assessment</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-2 h-2 rounded-full bg-light-primary dark:bg-dark-primary mr-3"></span>
+                <span>Current dynamics &amp; safety</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Activities -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div
+            class="text-center p-6 border border-light-primary/20 dark:border-dark-accent/20 rounded-lg hover:border-light-accent dark:hover:border-dark-secondary transition-colors"
+          >
+            <div
+              class="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-light-primary/10 dark:bg-dark-primary/30"
+            >
+              <i class="fas fa-campground text-light-primary dark:text-dark-accent"></i>
+            </div>
+            <h4 class="font-cormorant text-xl mb-2">Wilderness Camping</h4>
+            <p class="text-sm opacity-70">Dwelling temporarily within the night's embrace</p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-light-primary/20 dark:border-dark-accent/20 rounded-lg hover:border-light-accent dark:hover:border-dark-secondary transition-colors"
+          >
+            <div
+              class="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-light-primary/10 dark:bg-dark-primary/30"
+            >
+              <i class="fas fa-bicycle text-light-primary dark:text-dark-accent"></i>
+            </div>
+            <h4 class="font-cormorant text-xl mb-2">Forest Cycling</h4>
+            <p class="text-sm opacity-70">Moving through terrain with mindful momentum</p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-light-primary/20 dark:border-dark-accent/20 rounded-lg hover:border-light-accent dark:hover:border-dark-secondary transition-colors"
+          >
+            <div
+              class="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-light-primary/10 dark:bg-dark-primary/30"
+            >
+              <i class="fas fa-fire-alt text-light-primary dark:text-dark-accent"></i>
+            </div>
+            <h4 class="font-cormorant text-xl mb-2">Wilderness Cooking</h4>
+            <p class="text-sm opacity-70">Cultivating nourishment through direct means</p>
+          </div>
+
+          <div
+            class="text-center p-6 border border-light-primary/20 dark:border-dark-accent/20 rounded-lg hover:border-light-accent dark:hover:border-dark-secondary transition-colors"
+          >
+            <div
+              class="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-light-primary/10 dark:bg-dark-primary/30"
+            >
+              <i class="fas fa-rowing text-light-primary dark:text-dark-accent"></i>
+            </div>
+            <h4 class="font-cormorant text-xl mb-2">Mindful Paddling</h4>
+            <p class="text-sm opacity-70">Navigating waterways with rhythmic attention</p>
+          </div>
+        </div>
+
+        <div class="mt-16 flex justify-center">
+          <a
+            href="#join"
+            class="px-8 py-3 text-center border border-light-secondary dark:border-dark-secondary rounded-md text-lg font-medium hover:bg-light-secondary/10 dark:hover:bg-dark-secondary/10 transition-colors flex items-center"
+          >
+            <span>Find Your Practice</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Trails Section -->
+    <section id="trails" class="py-20 px-6 md:px-16 bg-light-primary/5 dark:bg-dark-primary/30">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-cormorant text-3xl md:text-5xl font-semibold mb-12 flex items-center">
+          <span class="w-12 h-0.5 bg-light-accent dark:bg-dark-accent mr-4"></span>
+          Hidden Pathways
+        </h2>
+
+        <p class="text-xl leading-relaxed max-w-3xl mb-12">
+          These trails exist at the margins of the mapped world, inviting an attentiveness that transcends mere
+          destination. Each passage offers a unique dialogue between terrain and attention.
+        </p>
+
+        <!-- Trail Cards -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Trail 1 -->
+          <div
+            class="flex flex-col h-full bg-white/80 dark:bg-dark-primary/40 rounded-lg overflow-hidden transition-transform hover:translate-y-[-4px] duration-300"
+          >
+            <div class="h-36 bg-light-secondary/30 dark:bg-dark-secondary/30 relative overflow-hidden">
+              <!-- Placeholder for trail illustration/pattern -->
+              <div class="absolute inset-0 opacity-30">
+                <svg class="w-full h-full" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0,50 Q50,0 100,50 T200,50"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                  <path
+                    d="M0,60 Q50,10 100,60 T200,60"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                  <path
+                    d="M0,40 Q50,-10 100,40 T200,40"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="0.5"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                </svg>
+              </div>
+              <!-- Trail difficulty indicator -->
+              <div
+                class="absolute top-3 right-3 px-2 py-1 bg-light-primary/90 dark:bg-dark-primary/90 text-white dark:text-dark-accent rounded text-xs font-medium"
+              >
+                Moderate
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-cormorant text-2xl font-semibold mb-2">Whispering Ridge</h3>
+              <div class="flex items-center text-sm opacity-80 mb-4">
+                <span class="flex items-center mr-4">
+                  <i class="fas fa-ruler-combined mr-1"></i>
+                  8.2 km
+                </span>
+                <span class="flex items-center">
+                  <i class="fas fa-mountain mr-1"></i>
+                  320m
+                </span>
+              </div>
+              <p class="text-sm mb-6 flex-grow">
+                A ridge path where air currents create subtle harmonic tones through the adjacent rock formations,
+                shifting with each season and atmospheric condition.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-2 py-1 bg-light-secondary/20 dark:bg-dark-secondary/20 rounded-full">
+                  Waterfall
+                </span>
+                <span class="text-xs px-2 py-1 bg-light-secondary/20 dark:bg-dark-secondary/20 rounded-full">
+                  Rock formations
+                </span>
+                <span class="text-xs px-2 py-1 bg-light-secondary/20 dark:bg-dark-secondary/20 rounded-full">
+                  Birding
+                </span>
+              </div>
+              <div
+                class="flex justify-between items-center mt-auto pt-4 border-t border-light-primary/10 dark:border-dark-accent/10"
+              >
+                <span class="text-sm opacity-70">Eastern Forest</span>
+                <span class="flex items-center text-xs">
+                  <i class="fas fa-clock mr-1"></i>
+                  ~3.5 hours
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trail 2 -->
+          <div
+            class="flex flex-col h-full bg-white/80 dark:bg-dark-primary/40 rounded-lg overflow-hidden transition-transform hover:translate-y-[-4px] duration-300"
+          >
+            <div class="h-36 bg-light-accent/30 dark:bg-dark-accent/30 relative overflow-hidden">
+              <!-- Placeholder for trail illustration/pattern -->
+              <div class="absolute inset-0 opacity-30">
+                <svg class="w-full h-full" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                  <circle
+                    cx="100"
+                    cy="50"
+                    r="30"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="0.7"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                  <circle
+                    cx="100"
+                    cy="50"
+                    r="40"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="0.5"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                  <circle
+                    cx="100"
+                    cy="50"
+                    r="20"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                </svg>
+              </div>
+              <!-- Trail difficulty indicator -->
+              <div
+                class="absolute top-3 right-3 px-2 py-1 bg-light-primary/90 dark:bg-dark-primary/90 text-white dark:text-dark-accent rounded text-xs font-medium"
+              >
+                Accessible
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-cormorant text-2xl font-semibold mb-2">Mirror Lake Circuit</h3>
+              <div class="flex items-center text-sm opacity-80 mb-4">
+                <span class="flex items-center mr-4">
+                  <i class="fas fa-ruler-combined mr-1"></i>
+                  4.6 km
+                </span>
+                <span class="flex items-center">
+                  <i class="fas fa-mountain mr-1"></i>
+                  90m
+                </span>
+              </div>
+              <p class="text-sm mb-6 flex-grow">
+                A gentle woodland path circling a high-mountain lake known for its perfect reflective surface, most
+                profound during the still hours of early morning.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-2 py-1 bg-light-accent/20 dark:bg-dark-accent/20 rounded-full">Swimming</span>
+                <span class="text-xs px-2 py-1 bg-light-accent/20 dark:bg-dark-accent/20 rounded-full">Meditation</span>
+                <span class="text-xs px-2 py-1 bg-light-accent/20 dark:bg-dark-accent/20 rounded-full">
+                  Dawn viewing
+                </span>
+              </div>
+              <div
+                class="flex justify-between items-center mt-auto pt-4 border-t border-light-primary/10 dark:border-dark-accent/10"
+              >
+                <span class="text-sm opacity-70">Northern Heights</span>
+                <span class="flex items-center text-xs">
+                  <i class="fas fa-clock mr-1"></i>
+                  ~2 hours
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trail 3 -->
+          <div
+            class="flex flex-col h-full bg-white/80 dark:bg-dark-primary/40 rounded-lg overflow-hidden transition-transform hover:translate-y-[-4px] duration-300"
+          >
+            <div class="h-36 bg-light-primary/30 dark:bg-dark-secondary/30 relative overflow-hidden">
+              <!-- Placeholder for trail illustration/pattern -->
+              <div class="absolute inset-0 opacity-30">
+                <svg class="w-full h-full" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                  <line
+                    x1="0"
+                    y1="20"
+                    x2="200"
+                    y2="20"
+                    stroke="currentColor"
+                    stroke-width="0.5"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                  <line
+                    x1="0"
+                    y1="40"
+                    x2="200"
+                    y2="40"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                  <line
+                    x1="0"
+                    y1="60"
+                    x2="200"
+                    y2="60"
+                    stroke="currentColor"
+                    stroke-width="1"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                  <line
+                    x1="0"
+                    y1="80"
+                    x2="200"
+                    y2="80"
+                    stroke="currentColor"
+                    stroke-width="0.5"
+                    class="text-light-primary dark:text-dark-accent"
+                  />
+                </svg>
+              </div>
+              <!-- Trail difficulty indicator -->
+              <div
+                class="absolute top-3 right-3 px-2 py-1 bg-light-primary/90 dark:bg-dark-primary/90 text-white dark:text-dark-accent rounded text-xs font-medium"
+              >
+                Challenging
+              </div>
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="font-cormorant text-2xl font-semibold mb-2">Limestone Cavern Path</h3>
+              <div class="flex items-center text-sm opacity-80 mb-4">
+                <span class="flex items-center mr-4">
+                  <i class="fas fa-ruler-combined mr-1"></i>
+                  10.7 km
+                </span>
+                <span class="flex items-center">
+                  <i class="fas fa-mountain mr-1"></i>
+                  480m
+                </span>
+              </div>
+              <p class="text-sm mb-6 flex-grow">
+                A challenging traverse through an ancient marine limestone deposit, revealing the layered memory of
+                geological time through fossil-rich exposures and cavern formations.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-2 py-1 bg-light-primary/20 dark:bg-dark-primary/20 rounded-full">Caves</span>
+                <span class="text-xs px-2 py-1 bg-light-primary/20 dark:bg-dark-primary/20 rounded-full">Fossils</span>
+                <span class="text-xs px-2 py-1 bg-light-primary/20 dark:bg-dark-primary/20 rounded-full">
+                  River crossing
+                </span>
+              </div>
+              <div
+                class="flex justify-between items-center mt-auto pt-4 border-t border-light-primary/10 dark:border-dark-accent/10"
+              >
+                <span class="text-sm opacity-70">Western Range</span>
+                <span class="flex items-center text-xs">
+                  <i class="fas fa-clock mr-1"></i>
+                  ~5 hours
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 p-6 bg-white/50 dark:bg-dark-primary/50 rounded-lg">
+          <div class="flex items-start">
+            <div class="text-light-accent dark:text-dark-accent mr-4 mt-1">
+              <i class="fas fa-info-circle text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-cormorant text-xl font-medium mb-2">Access Philosophy</h4>
+              <p class="text-sm leading-relaxed opacity-80">
+                We practice stewardship through mindful access. Some trails require prior orientation, others invite
+                open exploration, and certain fragile ecosystems necessitate guided engagement. This reciprocal approach
+                honors each place's carrying capacity and unique sensitivity.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center">
+          <a
+            href="#join"
+            class="inline-block px-8 py-3 bg-light-primary dark:bg-dark-primary text-white rounded-md text-lg font-medium hover:bg-light-secondary dark:hover:bg-dark-secondary transition-colors"
+          >
+            <span>Join to Access Full Trail Guides</span>
+            <i class="fas fa-key ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Join Community Section -->
+    <section id="join" class="py-20 px-6 md:px-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-cormorant text-3xl md:text-5xl font-semibold mb-12 flex items-center">
+          <span class="w-12 h-0.5 bg-light-primary dark:bg-dark-secondary mr-4"></span>
+          Join Our Watershed
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-16">
+          <div>
+            <p class="text-lg leading-relaxed mb-8">
+              Like a watershed gathering streams from diverse landscapes, our community draws together individuals whose
+              varied perspectives and ways of knowing create a collectively rich intelligence—one that no single person
+              could manifest alone.
+            </p>
+            <p class="text-lg leading-relaxed mb-8">
+              When you join BLR Hikes, you become part of an ecological system of attention and care. This is not merely
+              a transaction but an invitation into a web of reciprocity that extends beyond human relationships to
+              include the more-than-human world.
+            </p>
+
+            <div class="mt-8 space-y-6">
+              <div class="flex">
+                <div
+                  class="flex-shrink-0 h-10 w-10 rounded-full bg-light-accent/20 dark:bg-dark-accent/20 flex items-center justify-center text-light-accent dark:text-dark-accent"
+                >
+                  <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="font-cormorant text-xl font-semibold">Trail Knowledge</h3>
+                  <p class="mt-1 text-sm opacity-80">
+                    Access to detailed guides for hidden pathways and seasonal phenomena
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div
+                  class="flex-shrink-0 h-10 w-10 rounded-full bg-light-secondary/20 dark:bg-dark-secondary/20 flex items-center justify-center text-light-secondary dark:text-dark-secondary"
+                >
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="font-cormorant text-xl font-semibold">Guided Experiences</h3>
+                  <p class="mt-1 text-sm opacity-80">
+                    Regular gatherings with practitioners skilled in various forms of landscape engagement
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div
+                  class="flex-shrink-0 h-10 w-10 rounded-full bg-light-primary/20 dark:bg-dark-primary/20 flex items-center justify-center text-light-primary dark:text-dark-primary"
+                >
+                  <i class="fas fa-seedling"></i>
+                </div>
+                <div class="ml-4">
+                  <h3 class="font-cormorant text-xl font-semibold">Ecological Education</h3>
+                  <p class="mt-1 text-sm opacity-80">
+                    Learning opportunities that deepen your capacity to read landscape and participate in its patterns
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white/80 dark:bg-dark-primary/40 rounded-lg p-8">
+            <h3 class="font-cormorant text-2xl font-semibold mb-6 text-center">Become a Member</h3>
+
+            <form class="space-y-6">
+              <div class="space-y-2">
+                <label for="fullname" class="block text-sm font-medium">Full Name</label>
+                <input
+                  type="text"
+                  id="fullname"
+                  class="w-full px-4 py-2 rounded-md bg-light-background/50 dark:bg-dark-primary/20 border border-light-primary/20 dark:border-dark-accent/20 focus:outline-none focus:ring-2 focus:ring-light-accent dark:focus:ring-dark-accent"
+                  placeholder="As you are known in the world"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="email" class="block text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full px-4 py-2 rounded-md bg-light-background/50 dark:bg-dark-primary/20 border border-light-primary/20 dark:border-dark-accent/20 focus:outline-none focus:ring-2 focus:ring-light-accent dark:focus:ring-dark-accent"
+                  placeholder="Where we can reach you"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="interests" class="block text-sm font-medium">Areas of Interest</label>
+                <select
+                  id="interests"
+                  class="w-full px-4 py-2 rounded-md bg-light-background/50 dark:bg-dark-primary/20 border border-light-primary/20 dark:border-dark-accent/20 focus:outline-none focus:ring-2 focus:ring-light-accent dark:focus:ring-dark-accent"
+                >
+                  <option>Hiking & Trail Exploration</option>
+                  <option>Wild Swimming & Water Immersion</option>
+                  <option>Forest Skills & Plant Relationship</option>
+                  <option>Wilderness Camping & Night Awareness</option>
+                  <option>Ecological Observation & Documentation</option>
+                </select>
+              </div>
+
+              <div class="space-y-2">
+                <label for="experience" class="block text-sm font-medium">Experience Level</label>
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="flex items-center">
+                    <input
+                      type="radio"
+                      id="beginner"
+                      name="experience"
+                      class="h-4 w-4 text-light-accent dark:text-dark-accent focus:ring-light-accent dark:focus:ring-dark-accent"
+                    />
+                    <label for="beginner" class="ml-2 text-sm">Beginner</label>
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      type="radio"
+                      id="intermediate"
+                      name="experience"
+                      class="h-4 w-4 text-light-accent dark:text-dark-accent focus:ring-light-accent dark:focus:ring-dark-accent"
+                    />
+                    <label for="intermediate" class="ml-2 text-sm">Intermediate</label>
+                  </div>
+                  <div class="flex items-center">
+                    <input
+                      type="radio"
+                      id="experienced"
+                      name="experience"
+                      class="h-4 w-4 text-light-accent dark:text-dark-accent focus:ring-light-accent dark:focus:ring-dark-accent"
+                    />
+                    <label for="experienced" class="ml-2 text-sm">Experienced</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label for="message" class="block text-sm font-medium">What draws you to our community?</label>
+                <textarea
+                  id="message"
+                  rows="3"
+                  class="w-full px-4 py-2 rounded-md bg-light-background/50 dark:bg-dark-primary/20 border border-light-primary/20 dark:border-dark-accent/20 focus:outline-none focus:ring-2 focus:ring-light-accent dark:focus:ring-dark-accent"
+                  placeholder="Share your journey and intentions..."
+                ></textarea>
+              </div>
+
+              <div class="pt-2">
+                <button
+                  type="submit"
+                  class="w-full px-8 py-3 bg-light-primary dark:bg-dark-primary text-white rounded-md text-lg font-medium hover:bg-light-secondary dark:hover:bg-dark-secondary transition-colors flex items-center justify-center"
+                >
+                  <span>Join Our Community</span>
+                  <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="mt-16 p-6 bg-light-primary/5 dark:bg-dark-primary/30 rounded-lg">
+          <div class="flex items-start">
+            <div class="text-light-accent dark:text-dark-accent mr-4 mt-1">
+              <i class="fas fa-leaf text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-cormorant text-xl font-medium mb-2">Our Approach to Belonging</h4>
+              <p class="text-sm leading-relaxed opacity-80">
+                We recognize that access to wild spaces has historically been uneven. Our commitment is to cultivating a
+                community where diverse ways of knowing, moving through, and relating to landscape are honored. We
+                practice consent-based photography, respect varied physical capacities, and acknowledge the Indigenous
+                stewardship of the lands we traverse.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="py-16 px-6 md:px-16 bg-light-primary/10 dark:bg-dark-primary/50">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-12">
+          <!-- Logo & Brief -->
+          <div class="md:col-span-2">
+            <a href="#" class="font-cormorant text-3xl font-semibold tracking-wide">BLR Hikes</a>
+            <p class="mt-4 text-sm leading-relaxed opacity-80">
+              Moving with curiosity through landscapes, we cultivate attentive presence in wild spaces—listening to the
+              complex languages of ecology, acknowledging our participation in systems older than human memory.
+            </p>
+            <div class="mt-6 flex items-center">
+              <span class="text-xs opacity-70">In reciprocity with</span>
+              <span class="w-16 h-px bg-light-primary/30 dark:bg-dark-accent/30 mx-3"></span>
+              <span class="text-sm font-cormorant">Land, Waters, Seasons</span>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h4 class="font-cormorant text-lg font-semibold mb-4">Pathways</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#about"
+                  class="text-sm hover:text-light-secondary dark:hover:text-dark-accent transition-colors"
+                >
+                  Our Ethos
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#activities"
+                  class="text-sm hover:text-light-secondary dark:hover:text-dark-accent transition-colors"
+                >
+                  Practices
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#trails"
+                  class="text-sm hover:text-light-secondary dark:hover:text-dark-accent transition-colors"
+                >
+                  Trail Guides
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#join"
+                  class="text-sm hover:text-light-secondary dark:hover:text-dark-accent transition-colors"
+                >
+                  Join Community
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-sm hover:text-light-secondary dark:hover:text-dark-accent transition-colors">
+                  Safety Protocols
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-sm hover:text-light-secondary dark:hover:text-dark-accent transition-colors">
+                  Seasonal Calendar
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h4 class="font-cormorant text-lg font-semibold mb-4">Connect</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-envelope text-light-accent dark:text-dark-accent w-5"></i>
+                <a
+                  href="mailto:connect@blrhikes.com"
+                  class="text-sm ml-2 hover:text-light-secondary dark:hover:text-dark-accent transition-colors"
+                >
+                  connect@blrhikes.com
+                </a>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-map-marker-alt text-light-accent dark:text-dark-accent w-5"></i>
+                <span class="text-sm ml-2">Bangalore Region</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone text-light-accent dark:text-dark-accent w-5"></i>
+                <a
+                  href="tel:+919876543210"
+                  class="text-sm ml-2 hover:text-light-secondary dark:hover:text-dark-accent transition-colors"
+                >
+                  +91 987-654-3210
+                </a>
+              </li>
+            </ul>
+
+            <h4 class="font-cormorant text-lg font-semibold mt-6 mb-4">Follow Our Journey</h4>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="h-10 w-10 rounded-full border border-light-primary/30 dark:border-dark-accent/30 flex items-center justify-center hover:bg-light-primary/10 dark:hover:bg-dark-primary/30 transition-colors"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="#"
+                class="h-10 w-10 rounded-full border border-light-primary/30 dark:border-dark-accent/30 flex items-center justify-center hover:bg-light-primary/10 dark:hover:bg-dark-primary/30 transition-colors"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="h-10 w-10 rounded-full border border-light-primary/30 dark:border-dark-accent/30 flex items-center justify-center hover:bg-light-primary/10 dark:hover:bg-dark-primary/30 transition-colors"
+              >
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a
+                href="#"
+                class="h-10 w-10 rounded-full border border-light-primary/30 dark:border-dark-accent/30 flex items-center justify-center hover:bg-light-primary/10 dark:hover:bg-dark-primary/30 transition-colors"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="h-px bg-light-primary/20 dark:bg-dark-accent/20 my-10"></div>
+
+        <!-- Bottom Section -->
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div class="text-sm opacity-70">&copy; 2025 BLR Hikes. All rights reserved.</div>
+
+          <div class="flex items-center space-x-6">
+            <a href="#" class="text-xs hover:text-light-secondary dark:hover:text-dark-accent transition-colors">
+              Privacy
+            </a>
+            <a href="#" class="text-xs hover:text-light-secondary dark:hover:text-dark-accent transition-colors">
+              Terms
+            </a>
+            <a href="#" class="text-xs hover:text-light-secondary dark:hover:text-dark-accent transition-colors">
+              Land Acknowledgment
+            </a>
+            <a href="#" class="text-xs hover:text-light-secondary dark:hover:text-dark-accent transition-colors">
+              Accessibility
+            </a>
+          </div>
+
+          <div class="flex items-center">
+            <button
+              id="footer-theme-toggle"
+              class="p-2 rounded-full hover:bg-light-secondary/20 dark:hover:bg-dark-secondary/20 transition-colors text-sm"
+            >
+              <i class="fas fa-moon dark:hidden"></i>
+              <i class="fas fa-sun hidden dark:block"></i>
+              <span class="ml-1 hidden sm:inline">Toggle Theme</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Nature-inspired decorative element -->
+        <div class="mt-12 flex justify-center opacity-30">
+          <svg width="120" height="30" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0,15 Q30,0 60,15 T120,15"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              class="text-light-primary dark:text-dark-accent"
+            />
+            <path
+              d="M0,20 Q30,5 60,20 T120,20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="0.7"
+              class="text-light-primary dark:text-dark-accent"
+            />
+            <path
+              d="M0,10 Q30,-5 60,10 T120,10"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="0.4"
+              class="text-light-primary dark:text-dark-accent"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <script>
+        // Ensure footer theme toggle button works
+        const footerThemeToggle = document.getElementById("footer-theme-toggle");
+        footerThemeToggle.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+          localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+        });
+      </script>
+    </footer>
+
+    <script>
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("theme-toggle");
+
+      // Check for dark mode preference
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      // Toggle theme
+      themeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+      });
+    </script>
+  </body>
+</html>
